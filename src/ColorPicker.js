@@ -7,7 +7,8 @@ class ColorPicker extends Component {
         this.state = {
             hue: 180,
             saturation: 50,
-            lightness: 50
+            lightness: 50,
+            alpha: 100
         }
     }
     
@@ -32,17 +33,25 @@ class ColorPicker extends Component {
         }) 
     }
 
+    updateAlpha = (event) => {
+        let updatedAlpha = event.target.value / 100
+        this.setState({
+            alpha: updatedAlpha
+        })
+    }
+
     render() {
         return (
             <section className='color-palette'>
                 <section 
                     className='box-style' 
-                    style={{ backgroundColor: `hsl(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%)` }}>
+                    style={{ backgroundColor: `hsla(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%, ${this.state.alpha})` }}>
                 </section>
                 <section className='hsl-sliders'>
                     <Slider caption='Hue:' max='360' value={this.state.hue} update={this.updateHue}/>
                     <Slider caption='Saturation:' max='100' value={this.state.saturation} update={this.updateSaturation}/>
                     <Slider caption='Lightness:' max='100' value={this.state.lightness} update={this.updateLightness}/>
+                    <Slider caption='Alpha:' max='100' value={this.state.alpha * 100} update={this.updateAlpha}/>
                 </section>
             </section>
         );
