@@ -43,9 +43,12 @@ class ColorPicker extends Component {
     render() {
         return (
             <section className='color-palette'>
-                <section 
-                    className='box-style' 
-                    style={{ backgroundColor: `hsla(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%, ${this.state.alpha})` }}>
+                <section className='background-image-of-box'>
+                    <section 
+                        className='box-style' 
+                        // style={{ backgroundColor: `hsla(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%, ${this.state.alpha})` }}
+                        style={{ background: `linear-gradient(hsla(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%, ${this.state.alpha}), hsla(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%, ${this.state.alpha})), url('https://t4.ftcdn.net/jpg/01/33/26/35/240_F_133263567_h0efvBZ6g3ovqgIA3T5Xakr6ZIjSvXVS.jpg')` }}>
+                    </section>
                 </section>
                 <section className='hsl-sliders'>
                     <Slider caption='Hue:' max='360' value={this.state.hue} update={this.updateHue}/>
