@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Slider from './Slider'
 
 class ColorPicker extends Component {
     constructor(props) {
@@ -34,12 +35,14 @@ class ColorPicker extends Component {
     render() {
         return (
             <section className='color-palette'>
-                <section className='box-style' style={{ backgroundColor: `hsl(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%)` }}>
+                <section 
+                    className='box-style' 
+                    style={{ backgroundColor: `hsl(${this.state.hue}, ${this.state.saturation}%, ${this.state.lightness}%)` }}>
                 </section>
                 <section className='hsl-sliders'>
-                    <input type='range' min='0' max='360' value={this.state.hue} onChange={this.updateHue}/>
-                    <input type='range' min='0' max='100' value={this.state.saturation} onChange={this.updateSaturation}/>
-                    <input type='range' min='0' max='100' value={this.state.lightness} onChange={this.updateLightness}/>
+                    <Slider caption='Hue:' max='360' value={this.state.hue} update={this.updateHue}/>
+                    <Slider caption='Saturation:' max='100' value={this.state.saturation} update={this.updateSaturation}/>
+                    <Slider caption='Lightness:' max='100' value={this.state.lightness} update={this.updateLightness}/>
                 </section>
             </section>
         );
